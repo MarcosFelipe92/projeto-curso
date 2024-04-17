@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 1.2em;
+  margin-bottom: 2em;
+  background-color: #333;
+  color: #fff;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5em;
+}
+
+.navbar ul {
+  display: flex;
+  column-gap: 1.3em;
+}
+
+.navbar ul li {
+  padding: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar ul li:hover {
+  border-bottom: 2px solid #fff;
+}

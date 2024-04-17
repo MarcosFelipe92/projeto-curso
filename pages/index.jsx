@@ -1,13 +1,46 @@
-import { Inter } from "next/font/google";
+import Image from "next/image";
 
-const inter = Inter({ subsets: ["latin"] });
+import style from "../styles/Home.module.css";
 
-export default function Home() {
+import Card from "../components/Card";
+
+export async function getStaticProps() {
+  const maxPokemons = 251;
+  const api = "https://pokeapi.co/api/v2/pokemon/";
+
+  const res = await fetch(`${api}/?limit=${maxPokemons}`);
+  const data = await res.json();
+
+  data.results.forEach((item, index) => {
+    item.id = index + 1;
+  });
+
+  return {
+    props: {
+      pokemons: data.results,
+    },
+  };
+}
+
+export default function Home({ pokemons }) {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center  ${inter.className}`}
-    >
-      <h1>PokeNext</h1>
+    <main className={`flex  flex-col items-center`}>
+      <div className={style.title_container}>
+        <h1 className={style.title}>
+          Poke<span>Next</span>
+        </h1>
+        <Image
+          src="/images/pokeball.png"
+          width={50}
+          height={50}
+          alt="Imagem pokeball"
+        />
+      </div>
+      <div className={style.pokemon_container}>
+        {pokemons.map((pokemon) => (
+          <Card key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </div>
     </main>
   );
 }

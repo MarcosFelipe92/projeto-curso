@@ -1,0 +1,17 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.about p {
+  margin-bottom: 1.5em;
+  max-width: 500px;
+  line-height: 1.4em;
+}
